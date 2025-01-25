@@ -13,11 +13,19 @@ public class DropItem : MonoBehaviour
     public GameObject Spawn4;
     public GameObject Spawn5;
 
+    public GameObject DropDisplay;
+
+    private GameObject[] SpawnArray = new GameObject[5];
     private Rigidbody bobaBody;
     private Rigidbody jellyBody;
 
     private void Start()
     {
+        SpawnArray[0] = Spawn1;
+        SpawnArray[1] = Spawn2;
+        SpawnArray[2] = Spawn3;
+        SpawnArray[3] = Spawn4;
+        SpawnArray[4] = Spawn5;
         bobaBody = Boba.GetComponent<Rigidbody>();
         jellyBody = Jelly.GetComponent<Rigidbody>();
     }
@@ -34,6 +42,7 @@ public class DropItem : MonoBehaviour
     private void DropBoba()
     {
         int SpawnToChoose = (Random.Range(1, 6));
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose-1].transform, "Boba");
         var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
         bobaBody.AddForce(force);
         switch (SpawnToChoose)
@@ -66,6 +75,7 @@ public class DropItem : MonoBehaviour
     private void DropJelly()
     {
         int SpawnToChoose = (Random.Range(1, 6));
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose].transform, "Jelly");
         var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
         jellyBody.AddForce(force);
         switch (SpawnToChoose)

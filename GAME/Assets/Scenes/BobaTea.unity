@@ -747,6 +747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 433907357}
+  - component: {fileID: 433907358}
   m_Layer: 5
   m_Name: DropIcons
   m_TagString: Untagged
@@ -767,17 +768,29 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1755960439}
-  - {fileID: 1935842247}
+  - {fileID: 1276836174}
   - {fileID: 1619522897}
   - {fileID: 90086213}
-  - {fileID: 1276836174}
+  - {fileID: 1935842247}
   m_Father: {fileID: 1517397140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 335}
+  m_AnchoredPosition: {x: 0, y: 415}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &433907358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433907356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a52aa86e2c1904bbeef7df624646b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &468109234
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +920,7 @@ MonoBehaviour:
   Spawn3: {fileID: 743552805}
   Spawn4: {fileID: 1642724522}
   Spawn5: {fileID: 1510876048}
+  DropDisplay: {fileID: 433907356}
 --- !u!4 &514567030
 Transform:
   m_ObjectHideFlags: 0
