@@ -10,7 +10,6 @@ public class CameraMovement : MonoBehaviour
     public float mouseSensitivity = 2f;
     float cameraVerticalRotation = 0f;
 
-
     void Start()
     {
         // Lock and Hide the Cursor
@@ -38,3 +37,6 @@ public class CameraMovement : MonoBehaviour
 
     }
 }
+
+
+
