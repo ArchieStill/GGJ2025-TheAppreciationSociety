@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class DropItem : MonoBehaviour
 {
+    public GameObject Trigger;
     public GameObject Boba;
     public GameObject Jelly;
+
     public GameObject Spawn1;
     public GameObject Spawn2;
     public GameObject Spawn3;
     public GameObject Spawn4;
     public GameObject Spawn5;
+    public GameObject CanPanel;
 
+    private bool CanUse = true;
+    private float InactiveTime = 4.0f;
     private Rigidbody bobaBody;
     private Rigidbody jellyBody;
 
@@ -23,13 +28,30 @@ public class DropItem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && CanUse)
+        {
             DropBoba();
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            CanUse = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && CanUse)
+        {
             DropJelly();
+            CanUse = false;
+        }
+
+        if (!CanUse)
+        {
+            InactiveTime -= Time.deltaTime;
+            CanPanel.SetActive(true);
+        }
+        if (InactiveTime <= 0.0f)
+        {
+            CanUse = true;
+            CanPanel.SetActive(false);
+            InactiveTime = 4.0f;
+        }
     }
     
-
     private void DropBoba()
     {
         int SpawnToChoose = (Random.Range(1, 6));
@@ -38,23 +60,23 @@ public class DropItem : MonoBehaviour
         switch (SpawnToChoose)
         {
             case 1:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y + i, Spawn1.transform.position.z), Quaternion.identity);
                 break;
             case 2:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y + i, Spawn2.transform.position.z), Quaternion.identity);
                 break;
             case 3:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y + i, Spawn3.transform.position.z), Quaternion.identity);
                 break;
             case 4:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y + i, Spawn4.transform.position.z), Quaternion.identity);
                 break;
             case 5:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y + i, Spawn5.transform.position.z), Quaternion.identity);
                 break;
             default:
@@ -91,6 +113,16 @@ public class DropItem : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other == Trigger)
+        {
+            bobaBody.isKinematic = true;
+            jellyBody.isKinematic = true;
+            Debug.Log("TRIGGER");
         }
     }
 }
