@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DropItem : MonoBehaviour
 {
+    public GameObject Trigger;
     public GameObject Boba;
     public GameObject Jelly;
     public GameObject Spawn1;
@@ -91,6 +92,16 @@ public class DropItem : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other == Trigger)
+        {
+            bobaBody.isKinematic = true;
+            jellyBody.isKinematic = true;
+            Debug.Log("TRIGGER");
         }
     }
 }
