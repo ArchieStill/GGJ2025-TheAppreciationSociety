@@ -11,12 +11,14 @@ public class Dropsignals : MonoBehaviour
     private Transform Self;
     private int ChildNumber;
 
+    //quick access to own transform + calculating the ratio for screen/world space
     void Start()
     {
         Self = this.transform;
         segment = 685 / 4.5f;
     }
 
+    //makes the warning icon appear where the ingredient is dropping
     public void OnDrop(float DropPlace, string DropType)
     {
         float IconPosition = (DropPlace * segment) + 685;
@@ -26,9 +28,9 @@ public class Dropsignals : MonoBehaviour
         Self.GetChild(ChildNumber).transform.position = new Vector3(IconPosition, Chipos.position.y, Chipos.position.z);
     }
 
+    //makes the warning icon dissapear
     public void HideWarning()
     {
-        Debug.Log("xgfdcmhvjkulio;p'okjiukgyjtfmhgrndesbzbfxgchvjbyikuoip9u8yt,rfmgndesfbfxghjhk");
         Self.GetChild(ChildNumber).gameObject.SetActive(false);
     }
 }
