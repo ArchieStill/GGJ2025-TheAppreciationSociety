@@ -7,12 +7,20 @@ public class DropItem : MonoBehaviour
     public GameObject Trigger;
     public GameObject Boba;
     public GameObject Jelly;
+
     public GameObject Spawn1;
     public GameObject Spawn2;
     public GameObject Spawn3;
     public GameObject Spawn4;
     public GameObject Spawn5;
 
+    public GameObject BobaPanel;
+    public GameObject JellyPanel;
+    public GameObject TeaPanel;
+    public GameObject MilkPanel;
+    public GameObject SyrupPanel;
+
+    private float ActiveTime = 4.0f;
     private Rigidbody bobaBody;
     private Rigidbody jellyBody;
 
@@ -25,9 +33,24 @@ public class DropItem : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             DropBoba();
+            ActiveTime -= Time.deltaTime;
+        }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
             DropJelly();
+            ActiveTime -= Time.deltaTime;
+        }
+
+        if(ActiveTime <= 0.0f)
+            TimerEnded();
+
+    }
+
+    private void TimerEnded()
+    {
+        Debug.Log("HI");
     }
     
 
