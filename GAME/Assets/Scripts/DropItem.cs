@@ -13,14 +13,10 @@ public class DropItem : MonoBehaviour
     public GameObject Spawn3;
     public GameObject Spawn4;
     public GameObject Spawn5;
+    public GameObject CanPanel;
 
-    public GameObject BobaPanel;
-    public GameObject JellyPanel;
-    public GameObject TeaPanel;
-    public GameObject MilkPanel;
-    public GameObject SyrupPanel;
-
-    private float ActiveTime = 4.0f;
+    private bool CanUse = true;
+    private float InactiveTime = 4.0f;
     private Rigidbody bobaBody;
     private Rigidbody jellyBody;
 
@@ -32,28 +28,30 @@ public class DropItem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && CanUse)
         {
             DropBoba();
-            ActiveTime -= Time.deltaTime;
+            CanUse = false;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && CanUse)
         {
             DropJelly();
-            ActiveTime -= Time.deltaTime;
+            CanUse = false;
         }
 
-        if(ActiveTime <= 0.0f)
-            TimerEnded();
-
-    }
-
-    private void TimerEnded()
-    {
-        Debug.Log("HI");
+        if (!CanUse)
+        {
+            InactiveTime -= Time.deltaTime;
+            CanPanel.SetActive(true);
+        }
+        if (InactiveTime <= 0.0f)
+        {
+            CanUse = true;
+            CanPanel.SetActive(false);
+            InactiveTime = 4.0f;
+        }
     }
     
-
     private void DropBoba()
     {
         int SpawnToChoose = (Random.Range(1, 6));
@@ -62,23 +60,23 @@ public class DropItem : MonoBehaviour
         switch (SpawnToChoose)
         {
             case 1:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y + i, Spawn1.transform.position.z), Quaternion.identity);
                 break;
             case 2:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y + i, Spawn2.transform.position.z), Quaternion.identity);
                 break;
             case 3:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y + i, Spawn3.transform.position.z), Quaternion.identity);
                 break;
             case 4:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y + i, Spawn4.transform.position.z), Quaternion.identity);
                 break;
             case 5:
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                     Instantiate(Boba, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y + i, Spawn5.transform.position.z), Quaternion.identity);
                 break;
             default:
