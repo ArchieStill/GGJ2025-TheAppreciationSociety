@@ -28,7 +28,7 @@ public class DropItem : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2))
             DropJelly();
     }
-
+    
 
     private void DropBoba()
     {
@@ -38,19 +38,24 @@ public class DropItem : MonoBehaviour
         switch (SpawnToChoose)
         {
             case 1:
-                Instantiate(Boba, Spawn1.transform.position, Quaternion.identity);
+                for (int i = 0; i < 20; i++)
+                    Instantiate(Boba, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y + i, Spawn1.transform.position.z), Quaternion.identity);
                 break;
             case 2:
-                Instantiate(Boba, Spawn2.transform.position, Quaternion.identity);
+                for (int i = 0; i < 20; i++)
+                    Instantiate(Boba, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y + i, Spawn2.transform.position.z), Quaternion.identity);
                 break;
             case 3:
-                Instantiate(Boba, Spawn3.transform.position, Quaternion.identity);
+                for (int i = 0; i < 20; i++)
+                    Instantiate(Boba, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y + i, Spawn3.transform.position.z), Quaternion.identity);
                 break;
             case 4:
-                Instantiate(Boba, Spawn4.transform.position, Quaternion.identity);
+                for (int i = 0; i < 20; i++)
+                    Instantiate(Boba, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y + i, Spawn4.transform.position.z), Quaternion.identity);
                 break;
             case 5:
-                Instantiate(Boba, Spawn5.transform.position, Quaternion.identity);
+                for (int i = 0; i < 20; i++)
+                    Instantiate(Boba, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y + i, Spawn5.transform.position.z), Quaternion.identity);
                 break;
             default:
                 break;
@@ -65,19 +70,24 @@ public class DropItem : MonoBehaviour
         switch (SpawnToChoose)
         {
             case 1:
-                Instantiate(Jelly, Spawn1.transform.position, Quaternion.identity);
+                for (int i = 0; i < 10; i++)
+                    Instantiate(Jelly, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y + i, Spawn1.transform.position.z), Quaternion.identity);
                 break;
             case 2:
-                Instantiate(Jelly, Spawn2.transform.position, Quaternion.identity);
+                for (int i = 0; i < 10; i++)
+                    Instantiate(Jelly, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y + i, Spawn2.transform.position.z), Quaternion.identity);
                 break;
             case 3:
-                Instantiate(Jelly, Spawn3.transform.position, Quaternion.identity);
+                for (int i = 0; i < 10; i++)
+                    Instantiate(Jelly, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y + i, Spawn3.transform.position.z), Quaternion.identity);
                 break;
             case 4:
-                Instantiate(Jelly, Spawn4.transform.position, Quaternion.identity);
+                for (int i = 0; i < 10; i++)
+                    Instantiate(Jelly, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y + i, Spawn4.transform.position.z), Quaternion.identity);
                 break;
             case 5:
-                Instantiate(Jelly, Spawn5.transform.position, Quaternion.identity);
+                for (int i = 0; i < 10; i++)
+                    Instantiate(Jelly, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y + i, Spawn5.transform.position.z), Quaternion.identity);
                 break;
             default:
                 break;
