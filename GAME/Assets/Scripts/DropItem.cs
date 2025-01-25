@@ -15,6 +15,10 @@ public class DropItem : MonoBehaviour
     public GameObject Spawn5;
     public GameObject CanPanel;
 
+    public GameObject DropDisplay;
+    private bool WarningOn;
+    private GameObject[] SpawnArray = new GameObject[5];
+
     private bool CanUse = true;
     private float InactiveTime = 4.0f;
     private Rigidbody bobaBody;
@@ -22,6 +26,11 @@ public class DropItem : MonoBehaviour
 
     private void Start()
     {
+        SpawnArray[0] = Spawn1;
+        SpawnArray[1] = Spawn2;
+        SpawnArray[2] = Spawn3;
+        SpawnArray[3] = Spawn4;
+        SpawnArray[4] = Spawn5;
         bobaBody = Boba.GetComponent<Rigidbody>();
         jellyBody = Jelly.GetComponent<Rigidbody>();
     }
@@ -44,6 +53,11 @@ public class DropItem : MonoBehaviour
             InactiveTime -= Time.deltaTime;
             CanPanel.SetActive(true);
         }
+        if (InactiveTime <= 2 && WarningOn)
+        {
+            DropDisplay.GetComponent<Dropsignals>().HideWarning();
+            WarningOn = false;
+        }
         if (InactiveTime <= 0.0f)
         {
             CanUse = true;
@@ -55,6 +69,8 @@ public class DropItem : MonoBehaviour
     private void DropBoba()
     {
         int SpawnToChoose = (Random.Range(1, 6));
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose-1].transform.position.x, "Boba");
+        WarningOn = true;
         var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
         bobaBody.AddForce(force);
         switch (SpawnToChoose)
@@ -87,6 +103,8 @@ public class DropItem : MonoBehaviour
     private void DropJelly()
     {
         int SpawnToChoose = (Random.Range(1, 6));
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose-1].transform.position.x, "Jelly");
+        WarningOn = true;
         var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
         jellyBody.AddForce(force);
         switch (SpawnToChoose)
