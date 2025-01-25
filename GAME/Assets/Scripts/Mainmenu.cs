@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Mainmenu : MonoBehaviour
 {
@@ -22,6 +24,6 @@ public class Mainmenu : MonoBehaviour
     public void Begin()
     {
         Debug.Log("Startgame");
-        gameObject.SetActive(false);
+        SceneManager.LoadScene(1);
     }
 }
