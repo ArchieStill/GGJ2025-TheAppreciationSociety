@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TextToScreen : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class TextToScreen : MonoBehaviour
                 {
                     pointer += 1;
                     textMeshPro.SetText(currentConversation[pointer].ToString());
+                }
+                else
+                {
+                    print("hsdjufh");
+                    SceneManager.LoadScene(2);
                 }
             }
         }

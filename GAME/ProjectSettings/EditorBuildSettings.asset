@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: a438122d105ce7b49a4b68b717f0f8ce
   - enabled: 1
+    path: Assets/Scenes/Order1.unity
+    guid: 829477fd538a4604d919420741ed77ad
+  - enabled: 1
     path: Assets/Scenes/BobaTea.unity
     guid: abae10d6598053e4b8f3d4ff4c7ddc36
   - enabled: 1
