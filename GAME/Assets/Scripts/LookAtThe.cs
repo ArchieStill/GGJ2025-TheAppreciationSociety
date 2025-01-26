@@ -10,6 +10,8 @@ public class LookAtThe : MonoBehaviour
     public GameObject gamecanvas;
     public GameObject ordercanvas;
 
+    bool lookingDown = true;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -23,15 +25,23 @@ public class LookAtThe : MonoBehaviour
 
     public void LookUp()
     {
-        anim.SetInteger("Direction", 1);
-        gamecanvas.SetActive(false);
-        ordercanvas.SetActive(true);
+        if (lookingDown)
+        {
+            lookingDown = false;
+            anim.SetInteger("Direction", 1);
+            gamecanvas.SetActive(false);
+            ordercanvas.SetActive(true);
+        }
     }
 
     public void LookDown()
     {
+        if (!lookingDown)
+        { 
+        lookingDown = true;
         anim.SetInteger("Direction", -1);
         gamecanvas.SetActive(true);
         ordercanvas.SetActive(false);
+        }
     }
 }
