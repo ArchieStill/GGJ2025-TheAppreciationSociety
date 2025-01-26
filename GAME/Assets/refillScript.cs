@@ -8,33 +8,27 @@ public class refillScript : MonoBehaviour
     public Material teaMaterial;
     public Material milkMaterial;
     
-    [Header("Prefabs that have the materials/colors")]
     public GameObject teaPrefab;
     public GameObject milkPrefab;
-
-    [Header("Liquid Renderer & Material")]
+    
     public MeshRenderer liquidRenderer;
     private Material liquidMat;
-
-    [Header("Cup Information")]
+    
     public GameObject bottomOfCup;
-
-    [Header("Booleans to simulate pouring")]
+    
     public bool isTea = false;
     public bool isMilk = false;
-
-    [Header("Liquid Filling")]
+    
     public float refillIncrement = 0.01f;
     public float startFillOffset = -0.2f;
-
-    [Header("Color Mixing")]
+    
     public float colorLerpSpeed = 0.5f; // tweak as desired
 
     // Internal tracking
-    private bool colorSet = false;         // Has the liquid color been set yet?
-    private Color currentColor;            // The current color of our liquid
-    private Color targetColor;             // The color we want to move towards
-    private bool isMixing = false;         // Are we currently blending colors?
+    private bool colorSet = false;         
+    private Color currentColor;            
+    private Color targetColor;             
+    private bool isMixing = false;         
 
     private Color teaColor; 
     private Color milkColor;
@@ -48,12 +42,9 @@ public class refillScript : MonoBehaviour
         liquidMat.SetFloat("_GlobalFill", bottomOfCup.transform.position.y + startFillOffset);
 
         // Cache each liquid's color from its prefab's material
-        // You can use `.sharedMaterial` if you don’t want to create an extra instance
         teaColor = teaMaterial.color;
         milkColor = milkMaterial.color;
-
-        // Just to be safe, let's start currentColor as transparent or something
-        // Then once we detect tea or milk, we set it properly
+        
         currentColor = Color.clear; 
         liquidMat.SetColor("_Color", currentColor);
     }
@@ -67,25 +58,20 @@ public class refillScript : MonoBehaviour
             liquidMat.SetFloat("_GlobalFill", currentFill + (refillIncrement * Time.deltaTime));
         }
 
-        // 1) If Tea is turned on and no color has been set yet, set entire liquid to Tea color immediately
+        // If Tea is turned on and no color has been set yet, set entire liquid to Tea color immediately
         if (isTea && !colorSet)
         {
             currentColor = teaColor;
             liquidMat.SetColor("_Color", currentColor);
             colorSet = true;
         }
-        // 2) If Milk is turned on and no color has been set yet, set entire liquid to Milk color immediately
+        // If Milk is turned on and no color has been set yet, set entire liquid to Milk color immediately
         else if (isMilk && !colorSet)
         {
             currentColor = milkColor;
             liquidMat.SetColor("_Color", currentColor);
             colorSet = true;
         }
-        // 3) If we have already set a color (meaning we poured something first),
-        //    but then a second liquid is being poured, start a color blend.
-
-        // Example: If we poured Tea first, and now Milk is set true,
-        // we can blend from currentColor to a "mixed" color.
         
         if (colorSet)
         {
