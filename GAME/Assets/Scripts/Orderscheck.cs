@@ -12,6 +12,7 @@ public class Orderscheck : MonoBehaviour
     public GameObject FillChecker;
     public Camera Camera;
     public TMP_Text response;
+    public GameObject MIKU;
 
     private bool lookup = true;
     private float InactiveTime = 3.0f;
@@ -20,6 +21,7 @@ public class Orderscheck : MonoBehaviour
     {
         if (FillChecker.GetComponent<Fillcheck>().Checkfill())
         {
+            MIKU.SetActive(true);
             InactiveTime -= Time.deltaTime;
             if (lookup)
             {
