@@ -10,6 +10,7 @@ TagManager:
   - Tea
   - Milk
   - Syrup
+  - Floor
   layers:
   - Default
   - TransparentFX

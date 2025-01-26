@@ -6,20 +6,20 @@ public class IngredientCheck : MonoBehaviour
 {
     private CapsuleCollider CupTrigger;
 
-    private bool Hasboba;
-    private bool Hasjelly;
-    private bool Hastea;
-    private bool Hasmilk;
-    private bool Hassyrup;
+    private int Hasboba;
+    private int Hasjelly;
+    private int Hastea;
+    private int Hasmilk;
+    private int Hassyrup;
     private bool[] Hascontents = new bool[5];
 
     void Start()
     {
-        Hascontents[0] = Hasboba;
-        Hascontents[1] = Hasjelly;
-        Hascontents[2] = Hastea;
-        Hascontents[3] = Hasmilk;
-        Hascontents[4] = Hassyrup;
+        Hascontents[0] = false;
+        Hascontents[1] = false;
+        Hascontents[2] = false;
+        Hascontents[3] = false;
+        Hascontents[4] = false;
         CupTrigger = GetComponent<CapsuleCollider>();
     }
 
@@ -29,35 +29,62 @@ public class IngredientCheck : MonoBehaviour
         switch (other.tag)
         {
             case "Boba":
-                Debug.Log("boba");
-                Hasboba = true;
+                Hasboba++;
                 break;
             case "Jelly":
-                Debug.Log("jelly");
-                Hasjelly = true;
+                Hasjelly++;
                 break;
             case "Tea":
-                Debug.Log("tea");
-                Hastea = true;
+                Hastea++;
                 break;
             case "Milk":
-                Debug.Log("milk");
-                Hasmilk = true;
+                Hasmilk++;
                 break;
             case "Syrup":
-                Debug.Log("syrup");
-                Hassyrup = true;
+                Hassyrup++;
+                break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+            switch (other.tag)
+        {
+            case "Boba":
+                Hasboba--;
+                break;
+            case "Jelly":
+                Hasjelly--;
+                break;
+            case "Tea":
+                Hastea--;
+                break;
+            case "Milk":
+                Hasmilk--;
+                break;
+            case "Syrup":
+                Hassyrup--;
                 break;
         }
     }
 
     public bool[] ReturnContents()
     {
-        Hascontents[0] = Hasboba;
-        Hascontents[1] = Hasjelly;
-        Hascontents[2] = Hastea;
-        Hascontents[3] = Hasmilk;
-        Hascontents[4] = Hassyrup;
+        if (Hasboba >= 1)
+        {Hascontents[0] = true;}
+        else {Hascontents[0] = false;}
+        if (Hasjelly >= 1)
+        {Hascontents[1] = true;}
+        else {Hascontents[1] = false;}
+        if (Hastea >= 1)
+        {Hascontents[2] = true;}
+        else {Hascontents[2] = false;}
+        if (Hasmilk >= 1)
+        {Hascontents[3] = true;}
+        else {Hascontents[3] = false;}
+        if (Hassyrup >= 1)
+        {Hascontents[4] = true;}
+        else {Hascontents[4] = false;}
         return Hascontents;
     }
 }

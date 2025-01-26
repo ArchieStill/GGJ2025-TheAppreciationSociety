@@ -5,8 +5,14 @@ using UnityEngine;
 public class Orderscheck : MonoBehaviour
 {
     public GameObject IngredientChecker;
+    public GameObject FillChecker;
     private bool[] Contents = new bool[5];
     private bool[] Order = new bool[5];
+
+    private int OrderNum = 0;
+    private bool[] Order1 = {true, false, true, false, true};
+    private bool[] Order2 = {true, true, false, true, false};
+    private bool[] Order3 = {true, true, true, false, true};
 
     void Start()
     {
@@ -15,11 +21,19 @@ public class Orderscheck : MonoBehaviour
 
     void SetOrder()
     {
-        Order[0] = true;
-        Order[1] = true;
-        Order[2] = false;
-        Order[3] = false;
-        Order[4] = false;
+        if (OrderNum == 0)
+        {
+            Order = Order1;
+        }
+        else if (OrderNum == 1)
+        {
+            Order = Order2;
+        }
+        else if (OrderNum == 2)
+        {
+            Order = Order3;
+        }
+        OrderNum++;
     }
 
     void Update()
@@ -28,15 +42,21 @@ public class Orderscheck : MonoBehaviour
         bool pass = true;
         for (int i = 0; i < 5; i++)
         {
-            Debug.Log(Contents[0]);
             if (Order[i] != Contents[i])
             {
                 pass = false;
+                if (Order[i] == false && Contents[i] == true)
+                {
+                    Debug.Log("fail");
+                }
             }
         }
         if (pass)
         {
-            Debug.Log("pass");
+            if (FillChecker.GetComponent<Fillcheck>().Checkfill())
+            {
+                Debug.Log("pass");
+            }
         }
     }
 }

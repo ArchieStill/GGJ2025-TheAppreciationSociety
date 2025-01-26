@@ -15,13 +15,13 @@ public class Dropsignals : MonoBehaviour
     void Start()
     {
         Self = this.transform;
-        segment = 685 / 4.5f;
+        segment = 571 / 5.5f;
     }
 
     //makes the warning icon appear where the ingredient is dropping
     public void OnDrop(float DropPlace, string DropType)
     {
-        float IconPosition = (DropPlace * segment) + 685;
+        float IconPosition = (DropPlace * segment) + 771;
         ChildNumber = Array.IndexOf(ingredients, DropType);
         Self.GetChild(ChildNumber).gameObject.SetActive(true);
         Transform Chipos = Self.GetChild(ChildNumber).transform;
