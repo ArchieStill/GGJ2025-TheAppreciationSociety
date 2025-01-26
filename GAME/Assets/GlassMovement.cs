@@ -22,8 +22,8 @@ public class GlassMovement : MonoBehaviour
         //transform.position = new Vector3(mouse.x, transform.position.y, transform.position.z);
 
         if (Input.GetKey(KeyCode.A))
-            rb.AddForce(new Vector3(-40, 0, 0));
+            rb.AddForce(new Vector3(-250, 0, 0));
         if (Input.GetKey(KeyCode.D))
-            rb.AddForce(new Vector3(40, 0, 0));
+            rb.AddForce(new Vector3(250, 0, 0));
     }
 }
