@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework.Constraints;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LookAtThe : MonoBehaviour
@@ -12,25 +13,17 @@ public class LookAtThe : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            anim.SetInteger("Rotation", -1);
-            //transform.SetPositionAndRotation(transform.position, new Quaternion(25, 0, 0,0));
-
-        }
-
         if (Input.GetKeyDown(KeyCode.W))
         {
-            anim.SetInteger("Rotation", 1);
-            //transform.SetPositionAndRotation(transform.position, new Quaternion(25, 0, 0, 0));
+            print("hello");
+            PlayAnimation();
         }
-
     }
 
-    void resetDirection()
+    private void PlayAnimation()
     {
-        anim.SetInteger("Rotation", 0);
+        anim.SetTrigger("Rotate");
     }
 }
