@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Orderscheck : MonoBehaviour
 {
     public GameObject IngredientChecker;
     public GameObject FillChecker;
-    public Animator anim;
+    public Camera camera;
+    public TMP_Text response;
 
     private bool[] Contents = new bool[5];
     private bool[] Order = new bool[5];
@@ -18,7 +22,6 @@ public class Orderscheck : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
         SetOrder();
     }
 
@@ -51,6 +54,14 @@ public class Orderscheck : MonoBehaviour
                 if (Order[i] == false && Contents[i] == true)
                 {
                     Debug.Log("fail");
+                    if (FillChecker.GetComponent<Fillcheck>().Checkfill())
+                    {
+                        camera.GetComponent<LookAtThe>().LookUp();
+                        if (OrderNum == 0)
+                        {
+                            response.SetText("Not what I wanted! I hate you!");
+                        }
+                    }
                 }
             }
         }
@@ -59,7 +70,11 @@ public class Orderscheck : MonoBehaviour
             if (FillChecker.GetComponent<Fillcheck>().Checkfill())
             {
                 Debug.Log("pass");
-                anim.SetTrigger("Rotate");
+                camera.GetComponent<LookAtThe>().LookUp();
+                if(OrderNum == 0)
+                {
+                    response.SetText("Thank you!!!!");
+                }
             }
         }
     }

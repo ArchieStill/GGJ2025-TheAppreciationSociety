@@ -7,25 +7,13 @@ using UnityEngine;
 public class LookAtThe : MonoBehaviour
 {
     public Animator anim;
+    public GameObject gamecanvas;
+    public GameObject ordercanvas;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        PlayAnimation();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            print("hello");
-            LookUp();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            print("hello");
-            LookDown();
-        }
+        LookUp();
     }
 
     private void LateUpdate()
@@ -33,14 +21,17 @@ public class LookAtThe : MonoBehaviour
         anim.SetInteger("Direction", 0);
     }
 
-    private void LookUp()
+    public void LookUp()
     {
         anim.SetInteger("Direction", 1);
-
+        gamecanvas.SetActive(false);
+        ordercanvas.SetActive(true);
     }
 
-    private void LookDown()
+    public void LookDown()
     {
         anim.SetInteger("Direction", -1);
+        gamecanvas.SetActive(true);
+        ordercanvas.SetActive(false);
     }
 }

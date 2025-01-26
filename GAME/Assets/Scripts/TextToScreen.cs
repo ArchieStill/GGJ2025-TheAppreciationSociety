@@ -8,6 +8,7 @@ public class TextToScreen : MonoBehaviour
 {
     public TMP_Text textMeshPro;
     public GameObject OrderCanvas;
+    public GameObject Camera;
     int pointer = 0;
 
     private List<string> currentConversation;
@@ -26,6 +27,7 @@ public class TextToScreen : MonoBehaviour
                 else
                 {
                     OrderCanvas.SetActive(false);
+                    Camera.GetComponent<LookAtThe>().LookDown();
                 }
             }
         }

@@ -2528,6 +2528,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 468109239}
+  gamecanvas: {fileID: 469758295}
+  ordercanvas: {fileID: 966816580}
 --- !u!95 &468109239
 Animator:
   serializedVersion: 7
@@ -2541,7 +2543,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 9696ec5c850b1b645b912305714c6cdc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -2564,6 +2566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 662054710}
   OrderCanvas: {fileID: 966816580}
+  Camera: {fileID: 468109234}
 --- !u!1 &469758295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,7 +2582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &469758296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6364,7 +6367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IngredientChecker: {fileID: 1669612032}
   FillChecker: {fileID: 91463409}
-  anim: {fileID: 468109239}
+  camera: {fileID: 468109236}
+  response: {fileID: 662054710}
 --- !u!4 &1666346894
 Transform:
   m_ObjectHideFlags: 0
@@ -118472,7 +118476,7 @@ Rigidbody:
   m_GameObject: {fileID: 3367958594803276974}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 5
+  m_Drag: 8
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
