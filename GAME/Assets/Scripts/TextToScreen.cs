@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class TextToScreen : MonoBehaviour
 {
     public TMP_Text textMeshPro;
+    public GameObject OrderCanvas;
     int pointer = 0;
 
     private List<string> currentConversation;
@@ -24,8 +25,7 @@ public class TextToScreen : MonoBehaviour
                 }
                 else
                 {
-                    print("hsdjufh");
-                    SceneManager.LoadScene(2);
+                    OrderCanvas.SetActive(false);
                 }
             }
         }

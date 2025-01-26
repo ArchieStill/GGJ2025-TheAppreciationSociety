@@ -11,15 +11,15 @@ public class LookAtThe : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        PlayAnimation();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            print("hello");
-            PlayAnimation();
-        }
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    PlayAnimation();
+        //}
     }
 
     private void PlayAnimation()

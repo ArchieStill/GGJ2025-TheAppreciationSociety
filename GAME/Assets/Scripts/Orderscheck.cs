@@ -6,6 +6,8 @@ public class Orderscheck : MonoBehaviour
 {
     public GameObject IngredientChecker;
     public GameObject FillChecker;
+    public Animator anim;
+
     private bool[] Contents = new bool[5];
     private bool[] Order = new bool[5];
 
@@ -16,6 +18,7 @@ public class Orderscheck : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         SetOrder();
     }
 
@@ -56,6 +59,7 @@ public class Orderscheck : MonoBehaviour
             if (FillChecker.GetComponent<Fillcheck>().Checkfill())
             {
                 Debug.Log("pass");
+                anim.SetTrigger("Rotate");
             }
         }
     }

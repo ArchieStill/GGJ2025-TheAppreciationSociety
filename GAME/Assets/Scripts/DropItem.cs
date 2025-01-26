@@ -8,6 +8,8 @@ public class DropItem : MonoBehaviour
     public GameObject Boba;
     public GameObject Jelly;
     public GameObject Tea;
+    public GameObject Milk;
+    public GameObject Syrup;
 
     public GameObject Spawn1;
     public GameObject Spawn2;
@@ -25,6 +27,8 @@ public class DropItem : MonoBehaviour
     private Rigidbody bobaBody;
     private Rigidbody jellyBody;
     private Rigidbody teaBody;
+    private Rigidbody milkBody;
+    private Rigidbody syrupBody2;
 
     private void Start()
     {
@@ -53,6 +57,16 @@ public class DropItem : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha3) && CanUse)
         {
             DropTea();
+            CanUse = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && CanUse)
+        {
+            DropMilk();
+            CanUse = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5) && CanUse)
+        {
+            DropSyrup();
             CanUse = false;
         }
 
@@ -165,6 +179,62 @@ public class DropItem : MonoBehaviour
                 break;
             case 5:
                 Instantiate(Tea, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z), Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+    }
+    private void DropMilk()
+    {
+        int SpawnToChoose = (Random.Range(1, 6));
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Milk");
+        WarningOn = true;
+        var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
+        teaBody.AddForce(force);
+        switch (SpawnToChoose)
+        {
+            case 1:
+                Instantiate(Milk, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z), Quaternion.identity);
+                break;
+            case 2:
+                Instantiate(Milk, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z), Quaternion.identity);
+                break;
+            case 3:
+                Instantiate(Milk, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z), Quaternion.identity);
+                break;
+            case 4:
+                Instantiate(Milk, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z), Quaternion.identity);
+                break;
+            case 5:
+                Instantiate(Milk, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z), Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+    }
+    private void DropSyrup()
+    {
+        int SpawnToChoose = (Random.Range(1, 6));
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Syrup");
+        WarningOn = true;
+        var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
+        teaBody.AddForce(force);
+        switch (SpawnToChoose)
+        {
+            case 1:
+                Instantiate(Syrup, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z), Quaternion.identity);
+                break;
+            case 2:
+                Instantiate(Syrup, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z), Quaternion.identity);
+                break;
+            case 3:
+                Instantiate(Syrup, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z), Quaternion.identity);
+                break;
+            case 4:
+                Instantiate(Syrup, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z), Quaternion.identity);
+                break;
+            case 5:
+                Instantiate(Syrup, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z), Quaternion.identity);
                 break;
             default:
                 break;
