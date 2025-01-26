@@ -11,6 +11,7 @@ TagManager:
   - Milk
   - Syrup
   - Floor
+  - Cup
   layers:
   - Default
   - TransparentFX

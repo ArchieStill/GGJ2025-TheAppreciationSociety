@@ -25,6 +25,12 @@ public class RefillCollider : MonoBehaviour
             Destroy(other.gameObject);
             timer = 0;
         }
+        else if (other.CompareTag("Syrup"))
+        {
+            refillScr.isSyrup = true;
+            Destroy(other.gameObject);
+            timer = 0;
+        }
     }
 
     private void Update()
@@ -35,6 +41,7 @@ public class RefillCollider : MonoBehaviour
         {
             refillScr.isMilk = false;
             refillScr.isTea = false;
+            refillScr.isSyrup = false;
         }
     }
 }
