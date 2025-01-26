@@ -15,7 +15,7 @@ public class TextToScreen : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Camera.GetComponent<LookAtThe>().InOrder)
         {
             if (currentConversation != null)
             {
@@ -27,6 +27,7 @@ public class TextToScreen : MonoBehaviour
                 else
                 {
                     OrderCanvas.SetActive(false);
+                    Camera.GetComponent<LookAtThe>().InOrder = false;
                     Camera.GetComponent<LookAtThe>().LookDown();
                 }
             }
