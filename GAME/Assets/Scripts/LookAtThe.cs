@@ -9,6 +9,7 @@ public class LookAtThe : MonoBehaviour
     public Animator anim;
     public GameObject gamecanvas;
     public GameObject ordercanvas;
+
     public bool InOrder = true;
 
     private void Start()
@@ -32,8 +33,8 @@ public class LookAtThe : MonoBehaviour
 
     public void LookDown()
     {
-        InOrder  = false;
         anim.SetInteger("Direction", -1);
+        InOrder = false;
         gamecanvas.SetActive(true);
         ordercanvas.SetActive(false);
     }
