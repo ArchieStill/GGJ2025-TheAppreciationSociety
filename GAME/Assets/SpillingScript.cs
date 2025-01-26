@@ -20,7 +20,6 @@ public class SpillingScript : MonoBehaviour
     {
         if (isSpilling)
         {
-            Debug.Log("Spilling!");
             spillingSys.Play();
         }
         else if(spillingSys)
