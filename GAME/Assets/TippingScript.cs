@@ -37,17 +37,23 @@ public class TippingScript : MonoBehaviour
         
         foreach (var tippingPoint in childrens)
         {
+            var tippingParticles = tippingPoint.GetComponent<SpillingScript>();
             var tippingPointY = tippingPoint.transform.position.y + yOffset;
             float tippingOffsetCurrent = (tippingPointY - currentFill) * -1;
             
             if (tippingPointY < currentFill)
             {
                 spilling = true;
+                tippingParticles.isSpilling = true;
                 
                 if (spillingOffset < tippingOffsetCurrent)
                 {
                     spillingOffset = tippingOffsetCurrent;
                 }
+            }
+            else
+            {
+                tippingParticles.isSpilling = false;
             }
         }
 
