@@ -10,7 +10,7 @@ public class LookAtThe : MonoBehaviour
     public GameObject gamecanvas;
     public GameObject ordercanvas;
 
-    bool lookingDown = true;
+    public bool InOrder = true;
 
     private void Start()
     {
@@ -25,23 +25,17 @@ public class LookAtThe : MonoBehaviour
 
     public void LookUp()
     {
-        if (lookingDown)
-        {
-            lookingDown = false;
-            anim.SetInteger("Direction", 1);
-            gamecanvas.SetActive(false);
-            ordercanvas.SetActive(true);
-        }
+        anim.SetInteger("Direction", 1);
+        InOrder = true;
+        gamecanvas.SetActive(false);
+        ordercanvas.SetActive(true);
     }
 
     public void LookDown()
     {
-        if (!lookingDown)
-        { 
-        lookingDown = true;
         anim.SetInteger("Direction", -1);
+        InOrder = false;
         gamecanvas.SetActive(true);
         ordercanvas.SetActive(false);
-        }
     }
 }
