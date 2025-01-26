@@ -61,11 +61,11 @@ public class DropItem : MonoBehaviour
             DropMilk();
             CanUse = false;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha5) && CanUse)
-        {
-            DropSyrup();
-            CanUse = false;
-        }
+        // else if (Input.GetKeyDown(KeyCode.Alpha5) && CanUse)
+        // {
+        //     DropSyrup();
+        //     CanUse = false;
+        // }
 
         if (!CanUse)
         {
