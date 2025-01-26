@@ -641,7 +641,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -667,13 +667,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140476517}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14498183, y: 0.02836092, z: -0.04849577, w: 0.9878381}
+  m_LocalRotation: {x: 0.14612556, y: 0.021692853, z: -0.003205062, w: 0.98902303}
   m_LocalPosition: {x: -0.25, y: 6.41, z: -6.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 16.809, y: 2.513, z: -5.25}
+  m_LocalEulerAnglesHint: {x: 16.809, y: 2.513, z: 0}
 --- !u!1 &1185658635
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +823,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1710158300}
+  - component: {fileID: 1710158301}
   m_Layer: 0
   m_Name: BobaCupComplex
   m_TagString: Untagged
@@ -848,6 +849,24 @@ Transform:
   - {fileID: 884388827}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1710158301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710158299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b73deb49bd5834d9a4f4c1efedf5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 45
+  damping: 12
+  maxSpeed: 150
+  tiltFactor: 5
+  maxTiltAngle: 100
+  mouseInputMultiplier: 4
 --- !u!1 &1719524452
 GameObject:
   m_ObjectHideFlags: 0
