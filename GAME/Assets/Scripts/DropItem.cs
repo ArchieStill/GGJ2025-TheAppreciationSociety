@@ -7,6 +7,7 @@ public class DropItem : MonoBehaviour
     public GameObject Trigger;
     public GameObject Boba;
     public GameObject Jelly;
+    public GameObject Tea;
 
     public GameObject Spawn1;
     public GameObject Spawn2;
@@ -23,6 +24,7 @@ public class DropItem : MonoBehaviour
     private float InactiveTime = 4.0f;
     private Rigidbody bobaBody;
     private Rigidbody jellyBody;
+    private Rigidbody teaBody;
 
     private void Start()
     {
@@ -33,6 +35,7 @@ public class DropItem : MonoBehaviour
         SpawnArray[4] = Spawn5;
         bobaBody = Boba.GetComponent<Rigidbody>();
         jellyBody = Jelly.GetComponent<Rigidbody>();
+        teaBody = Tea.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -45,6 +48,11 @@ public class DropItem : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2) && CanUse)
         {
             DropJelly();
+            CanUse = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && CanUse)
+        {
+            DropTea();
             CanUse = false;
         }
 
@@ -128,6 +136,35 @@ public class DropItem : MonoBehaviour
             case 5:
                 for (int i = 0; i < 10; i++)
                     Instantiate(Jelly, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y + i, Spawn5.transform.position.z), Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void DropTea()
+    {
+        int SpawnToChoose = (Random.Range(1, 6));
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Tea");
+        WarningOn = true;
+        var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
+        teaBody.AddForce(force);
+        switch (SpawnToChoose)
+        {
+            case 1:
+                Instantiate(Tea, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z), Quaternion.identity);
+                break;
+            case 2:
+                Instantiate(Tea, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z), Quaternion.identity);
+                break;
+            case 3:
+                Instantiate(Tea, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z), Quaternion.identity);
+                break;
+            case 4:
+                Instantiate(Tea, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z), Quaternion.identity);
+                break;
+            case 5:
+                Instantiate(Tea, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z), Quaternion.identity);
                 break;
             default:
                 break;

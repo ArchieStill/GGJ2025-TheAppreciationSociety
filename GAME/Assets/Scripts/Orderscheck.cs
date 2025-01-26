@@ -5,6 +5,7 @@ using UnityEngine;
 public class Orderscheck : MonoBehaviour
 {
     public GameObject IngredientChecker;
+    public GameObject FillChecker;
     private bool[] Contents = new bool[5];
     private bool[] Order = new bool[5];
 
@@ -28,15 +29,21 @@ public class Orderscheck : MonoBehaviour
         bool pass = true;
         for (int i = 0; i < 5; i++)
         {
-            Debug.Log(Contents[0]);
             if (Order[i] != Contents[i])
             {
                 pass = false;
+                if (Order[i] == false && Contents[i] == true)
+                {
+                    Debug.Log("fail");
+                }
             }
         }
         if (pass)
         {
-            Debug.Log("pass");
+            if (FillChecker.GetComponent<Fillcheck>().Checkfill())
+            {
+                Debug.Log("pass");
+            }
         }
     }
 }
