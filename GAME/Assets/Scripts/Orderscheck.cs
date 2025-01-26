@@ -9,72 +9,28 @@ public class Orderscheck : MonoBehaviour
 {
     public GameObject IngredientChecker;
     public GameObject FillChecker;
+    public Camera Camera;
     public TMP_Text response;
 
-    private bool[] Contents = new bool[5];
-    private bool[] Order = new bool[5];
-
-    private int OrderNum = 0;
-    private bool[] Order1 = {true, false, true, false, true};
-    private bool[] Order2 = {true, true, false, true, false};
-    private bool[] Order3 = {true, true, true, false, true};
-
-    void Start()
-    {
-        SetOrder();
-    }
-
-    void SetOrder()
-    {
-        if (OrderNum == 0)
-        {
-            Order = Order1;
-        }
-        else if (OrderNum == 1)
-        {
-            Order = Order2;
-        }
-        else if (OrderNum == 2)
-        {
-            Order = Order3;
-        }
-        OrderNum++;
-    }
+    private bool lookup = true;
+    private float InactiveTime = 5.0f;
 
     void Update()
     {
-        Contents = IngredientChecker.GetComponent<IngredientCheck>().ReturnContents();
-        bool pass = true;
-        for (int i = 0; i < 5; i++)
+        if (FillChecker.GetComponent<Fillcheck>().Checkfill())
         {
-            if (Order[i] != Contents[i])
+            InactiveTime -= Time.deltaTime;
+            if (lookup)
             {
-                pass = false;
-                if (Order[i] == false && Contents[i] == true)
-                {
-                    Debug.Log("fail");
-                    if (FillChecker.GetComponent<Fillcheck>().Checkfill())
-                    {
-                        GetComponent<Camera>().GetComponent<LookAtThe>().LookUp();
-                        if (OrderNum == 0)
-                        {
-                            response.SetText("Not what I wanted! I hate you!");
-                        }
-                    }
-                }
+                Camera.GetComponent<Camera>().GetComponent<LookAtThe>().LookUp();
+                lookup = false;
+                response.SetText("Thank you!!!!");
             }
         }
-        if (pass)
+        if (InactiveTime <= 0)
         {
-            if (FillChecker.GetComponent<Fillcheck>().Checkfill())
-            {
-                Debug.Log("pass");
-                GetComponent<Camera>().GetComponent<LookAtThe>().LookUp();
-                if(OrderNum == 0)
-                {
-                    response.SetText("Thank you!!!!");
-                }
-            }
+            Application.Quit();
         }
+
     }
 }
