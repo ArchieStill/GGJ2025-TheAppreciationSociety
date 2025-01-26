@@ -29,11 +29,9 @@ public class IngredientCheck : MonoBehaviour
         switch (other.tag)
         {
             case "Boba":
-                Debug.Log(Hasboba+"boba");
                 Hasboba++;
                 break;
             case "Jelly":
-                Debug.Log(Hasjelly+"jelly");
                 Hasjelly++;
                 break;
             case "Tea":
@@ -53,11 +51,9 @@ public class IngredientCheck : MonoBehaviour
             switch (other.tag)
         {
             case "Boba":
-                Debug.Log("--boba");
                 Hasboba--;
                 break;
             case "Jelly":
-                Debug.Log("--jelly");
                 Hasjelly--;
                 break;
             case "Tea":

@@ -9,6 +9,11 @@ public class Orderscheck : MonoBehaviour
     private bool[] Contents = new bool[5];
     private bool[] Order = new bool[5];
 
+    private int OrderNum = 0;
+    private bool[] Order1 = {true, false, true, false, true};
+    private bool[] Order2 = {true, true, false, true, false};
+    private bool[] Order3 = {true, true, true, false, true};
+
     void Start()
     {
         SetOrder();
@@ -16,11 +21,19 @@ public class Orderscheck : MonoBehaviour
 
     void SetOrder()
     {
-        Order[0] = true;
-        Order[1] = true;
-        Order[2] = false;
-        Order[3] = false;
-        Order[4] = false;
+        if (OrderNum == 0)
+        {
+            Order = Order1;
+        }
+        else if (OrderNum == 1)
+        {
+            Order = Order2;
+        }
+        else if (OrderNum == 2)
+        {
+            Order = Order3;
+        }
+        OrderNum++;
     }
 
     void Update()
