@@ -61,11 +61,11 @@ public class DropItem : MonoBehaviour
             DropMilk();
             CanUse = false;
         }
-        // else if (Input.GetKeyDown(KeyCode.Alpha5) && CanUse)
-        // {
-        //     DropSyrup();
-        //     CanUse = false;
-        // }
+        else if (Input.GetKeyDown(KeyCode.Alpha5) && CanUse)
+        {
+            DropSyrup();
+            CanUse = false;
+        }
 
         if (!CanUse)
         {
@@ -81,6 +81,7 @@ public class DropItem : MonoBehaviour
         {
             Tea.GetComponent<Spawner>().isSpawning = false;
             Milk.GetComponent<Spawner>().isSpawning = false;
+            Syrup.GetComponent<Spawner>().isSpawning = false;
             CanUse = true;
             CanPanel.SetActive(false);
             InactiveTime = 4.0f;
@@ -214,26 +215,26 @@ public class DropItem : MonoBehaviour
         int SpawnToChoose = (Random.Range(1, 6));
         DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Syrup");
         WarningOn = true;
-        var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
         switch (SpawnToChoose)
         {
             case 1:
-                Instantiate(Syrup, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z), Quaternion.identity);
+                Syrup.transform.position = new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z);
                 break;
             case 2:
-                Instantiate(Syrup, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z), Quaternion.identity);
+                Syrup.transform.position = new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z);
                 break;
             case 3:
-                Instantiate(Syrup, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z), Quaternion.identity);
+                Syrup.transform.position = new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z);
                 break;
             case 4:
-                Instantiate(Syrup, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z), Quaternion.identity);
+                Syrup.transform.position = new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z);
                 break;
             case 5:
-                Instantiate(Syrup, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z), Quaternion.identity);
+                Syrup.transform.position = new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z);
                 break;
             default:
                 break;
         }
+        Syrup.GetComponent<Spawner>().isSpawning = true;
     }
 }

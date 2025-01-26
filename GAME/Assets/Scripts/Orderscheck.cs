@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Orderscheck : MonoBehaviour
@@ -13,7 +14,7 @@ public class Orderscheck : MonoBehaviour
     public TMP_Text response;
 
     private bool lookup = true;
-    private float InactiveTime = 5.0f;
+    private float InactiveTime = 3.0f;
 
     void Update()
     {
@@ -29,7 +30,7 @@ public class Orderscheck : MonoBehaviour
         }
         if (InactiveTime <= 0)
         {
-            Application.Quit();
+            SceneManager.LoadScene(0);
         }
 
     }
