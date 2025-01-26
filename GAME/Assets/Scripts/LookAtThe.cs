@@ -16,14 +16,31 @@ public class LookAtThe : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    PlayAnimation();
-        //}
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            print("hello");
+            LookUp();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            print("hello");
+            LookDown();
+        }
     }
 
-    private void PlayAnimation()
+    private void LateUpdate()
     {
-        anim.SetTrigger("Rotate");
+        anim.SetInteger("Direction", 0);
+    }
+
+    private void LookUp()
+    {
+        anim.SetInteger("Direction", 1);
+
+    }
+
+    private void LookDown()
+    {
+        anim.SetInteger("Direction", -1);
     }
 }
