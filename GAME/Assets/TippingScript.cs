@@ -57,7 +57,7 @@ public class TippingScript : MonoBehaviour
 
         if (spilling)
         {
-            liquidMat.SetFloat("_GlobalFill", currentFill - (spillingOffset * spillRate));
+            liquidMat.SetFloat("_GlobalFill", currentFill - (spillRate));
         }
     }
 }

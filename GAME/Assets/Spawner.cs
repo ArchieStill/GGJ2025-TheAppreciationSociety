@@ -15,6 +15,8 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isSpawning) return;
+
         timer += Time.deltaTime;
 
         if (timer > interval)

@@ -27,8 +27,6 @@ public class DropItem : MonoBehaviour
     private Rigidbody bobaBody;
     private Rigidbody jellyBody;
     private Rigidbody teaBody;
-    private Rigidbody milkBody;
-    private Rigidbody syrupBody2;
 
     private void Start()
     {
@@ -37,9 +35,6 @@ public class DropItem : MonoBehaviour
         SpawnArray[2] = Spawn3;
         SpawnArray[3] = Spawn4;
         SpawnArray[4] = Spawn5;
-        bobaBody = Boba.GetComponent<Rigidbody>();
-        jellyBody = Jelly.GetComponent<Rigidbody>();
-        teaBody = Tea.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -82,16 +77,18 @@ public class DropItem : MonoBehaviour
         }
         if (InactiveTime <= 0.0f)
         {
+            Tea.GetComponent<Spawner>().isSpawning = false;
+            Milk.GetComponent<Spawner>().isSpawning = false;
             CanUse = true;
             CanPanel.SetActive(false);
             InactiveTime = 4.0f;
         }
     }
-    
+
     private void DropBoba()
     {
         int SpawnToChoose = (Random.Range(1, 6));
-        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose-1].transform.position.x, "Boba");
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Boba");
         WarningOn = true;
         var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
         bobaBody.AddForce(force);
@@ -125,7 +122,7 @@ public class DropItem : MonoBehaviour
     private void DropJelly()
     {
         int SpawnToChoose = (Random.Range(1, 6));
-        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose-1].transform.position.x, "Jelly");
+        DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Jelly");
         WarningOn = true;
         var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
         jellyBody.AddForce(force);
@@ -161,56 +158,54 @@ public class DropItem : MonoBehaviour
         int SpawnToChoose = (Random.Range(1, 6));
         DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Tea");
         WarningOn = true;
-        var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
-        teaBody.AddForce(force);
         switch (SpawnToChoose)
         {
             case 1:
-                Instantiate(Tea, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z), Quaternion.identity);
+                Tea.transform.position = new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z);
                 break;
             case 2:
-                Instantiate(Tea, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z), Quaternion.identity);
+                Tea.transform.position = new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z);
                 break;
             case 3:
-                Instantiate(Tea, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z), Quaternion.identity);
+                Tea.transform.position = new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z);
                 break;
             case 4:
-                Instantiate(Tea, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z), Quaternion.identity);
+                Tea.transform.position = new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z);
                 break;
             case 5:
-                Instantiate(Tea, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z), Quaternion.identity);
+                Tea.transform.position = new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z);
                 break;
             default:
                 break;
         }
+        Tea.GetComponent<Spawner>().isSpawning = true;
     }
     private void DropMilk()
     {
         int SpawnToChoose = (Random.Range(1, 6));
         DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Milk");
         WarningOn = true;
-        var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
-        teaBody.AddForce(force);
         switch (SpawnToChoose)
         {
             case 1:
-                Instantiate(Milk, new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z), Quaternion.identity);
+                Milk.transform.position = new Vector3(Spawn1.transform.position.x, Spawn1.transform.position.y, Spawn1.transform.position.z);
                 break;
             case 2:
-                Instantiate(Milk, new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z), Quaternion.identity);
+                Milk.transform.position = new Vector3(Spawn2.transform.position.x, Spawn2.transform.position.y, Spawn2.transform.position.z);
                 break;
             case 3:
-                Instantiate(Milk, new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z), Quaternion.identity);
+                Milk.transform.position = new Vector3(Spawn3.transform.position.x, Spawn3.transform.position.y, Spawn3.transform.position.z);
                 break;
             case 4:
-                Instantiate(Milk, new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z), Quaternion.identity);
+                Milk.transform.position = new Vector3(Spawn4.transform.position.x, Spawn4.transform.position.y, Spawn4.transform.position.z);
                 break;
             case 5:
-                Instantiate(Milk, new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z), Quaternion.identity);
+                Milk.transform.position = new Vector3(Spawn5.transform.position.x, Spawn5.transform.position.y, Spawn5.transform.position.z);
                 break;
             default:
                 break;
         }
+        Milk.GetComponent<Spawner>().isSpawning = true;
     }
     private void DropSyrup()
     {
@@ -218,7 +213,6 @@ public class DropItem : MonoBehaviour
         DropDisplay.GetComponent<Dropsignals>().OnDrop(SpawnArray[SpawnToChoose - 1].transform.position.x, "Syrup");
         WarningOn = true;
         var force = new Vector3(Random.Range(1, 6), 1, Random.Range(1, 6));
-        teaBody.AddForce(force);
         switch (SpawnToChoose)
         {
             case 1:
@@ -238,16 +232,6 @@ public class DropItem : MonoBehaviour
                 break;
             default:
                 break;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other == Trigger)
-        {
-            bobaBody.isKinematic = true;
-            jellyBody.isKinematic = true;
-            Debug.Log("TRIGGER");
         }
     }
 }

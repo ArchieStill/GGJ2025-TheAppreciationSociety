@@ -7,12 +7,12 @@ public class GlassMovement : MonoBehaviour
     public float MouseX = 1;
     public float MouseY = 1;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    //private void Start()
+    //{
+    //    rb = GetComponent<Rigidbody>();
+    //}
 
     void Update()
     {

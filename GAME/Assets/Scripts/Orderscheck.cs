@@ -9,7 +9,6 @@ public class Orderscheck : MonoBehaviour
 {
     public GameObject IngredientChecker;
     public GameObject FillChecker;
-    public Camera camera;
     public TMP_Text response;
 
     private bool[] Contents = new bool[5];
@@ -56,7 +55,7 @@ public class Orderscheck : MonoBehaviour
                     Debug.Log("fail");
                     if (FillChecker.GetComponent<Fillcheck>().Checkfill())
                     {
-                        camera.GetComponent<LookAtThe>().LookUp();
+                        GetComponent<Camera>().GetComponent<LookAtThe>().LookUp();
                         if (OrderNum == 0)
                         {
                             response.SetText("Not what I wanted! I hate you!");
@@ -70,7 +69,7 @@ public class Orderscheck : MonoBehaviour
             if (FillChecker.GetComponent<Fillcheck>().Checkfill())
             {
                 Debug.Log("pass");
-                camera.GetComponent<LookAtThe>().LookUp();
+                GetComponent<Camera>().GetComponent<LookAtThe>().LookUp();
                 if(OrderNum == 0)
                 {
                     response.SetText("Thank you!!!!");
