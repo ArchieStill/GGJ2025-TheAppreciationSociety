@@ -12,11 +12,6 @@ public class SpillingScript : MonoBehaviour
     private void Awake()
     { 
         spillingSys = this.gameObject.GetComponentInChildren<ParticleSystem>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         spillingSys.Stop();
     }
 
@@ -25,6 +20,7 @@ public class SpillingScript : MonoBehaviour
     {
         if (isSpilling)
         {
+            Debug.Log("Spilling!");
             spillingSys.Play();
         }
         else if(spillingSys)

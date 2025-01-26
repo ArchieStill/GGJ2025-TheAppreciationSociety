@@ -38,6 +38,8 @@ public class TippingScript : MonoBehaviour
         foreach (var tippingPoint in childrens)
         {
             var tippingParticles = tippingPoint.GetComponent<SpillingScript>();
+            tippingParticles.isSpilling = false;
+            
             var tippingPointY = tippingPoint.transform.position.y + yOffset;
             float tippingOffsetCurrent = (tippingPointY - currentFill) * -1;
             
@@ -50,10 +52,6 @@ public class TippingScript : MonoBehaviour
                 {
                     spillingOffset = tippingOffsetCurrent;
                 }
-            }
-            else
-            {
-                tippingParticles.isSpilling = false;
             }
         }
 
