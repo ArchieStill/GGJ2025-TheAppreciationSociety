@@ -26,7 +26,6 @@ public class DropItem : MonoBehaviour
     private float InactiveTime = 4.0f;
     private Rigidbody bobaBody;
     private Rigidbody jellyBody;
-    private Rigidbody teaBody;
 
     private void Start()
     {
@@ -35,6 +34,9 @@ public class DropItem : MonoBehaviour
         SpawnArray[2] = Spawn3;
         SpawnArray[3] = Spawn4;
         SpawnArray[4] = Spawn5;
+
+        bobaBody = Boba.GetComponent<Rigidbody>();
+        jellyBody = Jelly.GetComponent<Rigidbody>();
     }
 
     void Update()
