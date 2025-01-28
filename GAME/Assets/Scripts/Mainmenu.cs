@@ -14,14 +14,12 @@ public class Mainmenu : MonoBehaviour
     //closes the game when exit button is pressed
     public void Exit()
     {
-        Debug.Log("quitting game");
         Application.Quit();
     }
 
     //begins the gameplay when start button is pressed
     public void Begin()
     {
-        Debug.Log("Startgame");
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }
